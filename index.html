@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>Hello MUI</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+		<link rel="stylesheet" type="text/css" href="css/technicians_center.css"/>
+		<link rel="stylesheet" href="css/mui.css">
+		<link rel="stylesheet" type="text/css" href="css/index.css"/>
+		<script src="js/zepto.js" type="text/javascript" charset="utf-8"></script>
+		<script src="js/touch.js" type="text/javascript" charset="utf-8"></script>
+		 <!--<script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>-->
+		<script src="js/mui.min.js" type="text/javascript" charset="utf-8"></script>
+		<script src="js/index.js" type="text/javascript" charset="utf-8"></script>
+		
+	</head>
+
+	<body>
+		<div id="offCanvasWrapper" class="mui-off-canvas-wrap mui-draggable">
+			<!--侧滑菜单部分-->
+			<aside id="offCanvasSide" class="mui-off-canvas-left">
+				<div id="offCanvasSideScroll" class="mui-scroll-wrapper">
+					<div class="mui-scroll">
+						<div class="content">
+							<img src="1.jpg" alt="" />
+						</div>
+						<div class="title" style="margin-bottom: 25px;">下线</div>
+						<ul class="function_lists">
+							<li>
+								<a>
+									个人资料
+								</a>
+							</li>
+							<li>
+								<a>
+									业绩
+								</a>
+							</li>
+							<li>
+								<a>
+									退出账号
+								</a>
+							</li>
+							
+						</ul>
+					</div>
+				</div>
+			</aside>
+			<!--主界面部分-->
+			<div class="mui-inner-wrap">
+				<header class="mui-bar mui-bar-nav">
+					<a href="#offCanvasSide" class="mui-icon mui-action-menu mui-icon-bars mui-pull-left"></a>
+				
+					<h1 class="mui-title" >NO123</h1>
+				</header>
+				<div id="offCanvasContentScroll" class="mui-content mui-scroll-wrapper">
+					<div>
+						<div class="mui-content-padded" style="margin: 0px;padding:0px;height: 50px;">
+							 <div class="order" id="order">最近预约</div>
+							 <div class="list" >最近订单</div>
+						</div>
+						<div class="technical_time" >
+							 <div class="circle" >
+								<div class="pie_left"><div class="left"></div></div>
+								<div class="pie_right"><div class="right"></div></div>
+								<div class="mask">
+									<!--<div class="time">ddd</div>
+									<div>分钟</div>
+									<div>已超时</div>-->
+								</div>
+    								<div class="chaoshi">您将在<span></span>分钟后下钟</div>
+    								<button class="time_button start" style="display: block;">点击上钟</button>
+  								<button class="time_button stop" >点击下钟</button>
+ 							</div>	
+						</div>
+						<div class="technical_function">
+  								<ul>
+  									<li><a href="">预约管理</a></li>
+  									<li><a href="">上报预约</a></li>
+  									<li><a href="">订单管理</a></li>
+  								</ul>
+  							</div>
+					</div>
+				<!-- off-canvas backdrop -->
+				<!--<div class="mui-off-canvas-backdrop">dd</div>-->
+			</div>
+			
+		</div>
+		</div>
+		<script>
+	
+		document.getElementById('order').addEventListener('tap', function() {
+  //打开关于页面
+alert(123);
+  mui.openWindow({
+    url: 'css/ZhuCe.html', 
+    id:'info'
+  });
+});
+		
+		
+			mui.init();
+			//侧滑容器父节点
+			var offCanvasWrapper = mui('#offCanvasWrapper');
+			//主界面容器
+			var offCanvasInner = offCanvasWrapper[0].querySelector('.mui-inner-wrap');
+			//菜单容器
+			var offCanvasSide = document.getElementById("offCanvasSide");
+
+//			if (!mui.os.android) {
+//				document.getElementById("move-togger").classList.remove('mui-hidden');
+//				var spans = document.querySelectorAll('.android-only');
+//				for (var i=0,len=spans.length;i<len;i++) {
+//					spans[i].style.display = "none";
+//				}
+//
+//			}
+
+
+			//移动效果是否为整体移动
+			var moveTogether = false;
+			//侧滑容器的class列表，增加.mui-slide-in即可实现菜单移动、主界面不动的效果；
+			var classList = offCanvasWrapper[0].classList;
+			//变换侧滑动画移动效果；
+//			mui('.mui-input-group').on('change', 'input', function() {
+//				if (this.checked) {
+//					switch (this.value) {
+//						case 'main-move':
+//							classList.remove('mui-slide-in');
+//							if(moveTogether){
+//								//仅主内容滑动时，侧滑菜单在off-canvas-wrap内，和主界面并列
+//								offCanvasWrapper[0].insertBefore(offCanvasSide, offCanvasWrapper[0].firstElementChild);
+//							}
+//							break;
+//						case 'menu-move':
+//							classList.add('mui-slide-in');
+//							break;
+//						case 'all-move':
+//							if(classList.contains('mui-slide-in')){
+//								classList.remove('mui-slide-in');
+//							}
+//							moveTogether = true;
+//							//整体滑动时，侧滑菜单在inner-wrap内
+//							offCanvasInner.insertBefore(offCanvasSide, offCanvasInner.firstElementChild);
+//							break;
+//					}
+//					offCanvasWrapper.offCanvas().refresh();
+//					offCanvasSide.classList.remove('mui-transitioning');
+//					offCanvasSide.setAttribute('style', '');
+//				}
+//			});
+
+
+			//主界面‘显示侧滑菜单’按钮的点击事件
+//			document.getElementById('offCanvasShow').addEventListener('tap', function() {
+//				offCanvasWrapper.offCanvas('show');
+//			});
+//			//菜单界面，‘关闭侧滑菜单’按钮的点击事件
+//			document.getElementById('offCanvasHide').addEventListener('tap', function() {
+//				offCanvasWrapper.offCanvas('close');
+//			});
+			//主界面和侧滑菜单界面均支持区域滚动；
+			mui('#offCanvasSideScroll').scroll();
+			mui('#offCanvasContentScroll').scroll();
+			 //实现ios平台原生侧滑关闭页面；
+//			if (mui.os.plus && mui.os.ios) {
+//				mui.plusReady(function() { //5+ iOS暂时无法屏蔽popGesture时传递touch事件，故该demo直接屏蔽popGesture功能
+//					plus.webview.currentWebview().setStyle({
+//						'popGesture': 'none'
+//					});
+//				});
+//			}
+
+			
+		</script>
+	</body>
+</html>
