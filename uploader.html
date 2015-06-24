@@ -23,7 +23,6 @@ function upload(){
 		{method:"POST"},
 		function(t,status){ //上传完成
 			if(status==200){
-//				alert(t.responseText)
 				outLine("上传成功："+t.responseText);
 				plus.storage.setItem("uploader",t.responseText);
 				var w=plus.webview.create("uploader_ret.html","uploader_ret.html",{scrollIndicator:'none',scalable:false});
@@ -41,17 +40,16 @@ function upload(){
 	task.addData("uid",getUid());
 	for(var i=0;i<files.length;i++){
 		var f=files[i];
-//		alert(f)
 		task.addFile(f.path,{key:f.name});
 	}
 	task.start();//调用上传参数
 }
-// 拍照添加文件
-//function appendByCamera(){
-//	plus.camera.getCamera().captureImage(function(p){
-//		appendFile(p);
-//	});	
-//}
+拍照添加文件
+function appendByCamera(){
+	plus.camera.getCamera().captureImage(function(p){
+		appendFile(p);
+	});	
+}
    从相册添加文件
 function appendByGallery(){
 	plus.gallery.pick(function(p){
